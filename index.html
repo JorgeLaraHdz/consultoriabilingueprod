@@ -37,7 +37,10 @@
       --blue: #2e56bd;
       --sky: #57bfd1;
       --sky-pale: #e9f8fa;
-      --orange: #ff681f;
+      --gold-accent: #8f6e00;
+      --gold-display: #b78600;
+      --teal-action: #147f93;
+      --teal-action-hover: #0f6f80;
       --yellow: #ffca31;
       --cream: #fffaf1;
       --paper: #fffdf9;
@@ -174,7 +177,7 @@
       align-items: center;
       gap: 9px;
       margin-bottom: 16px;
-      color: var(--orange);
+      color: var(--gold-accent);
       font-size: .78rem;
       font-weight: 900;
       letter-spacing: .13em;
@@ -257,6 +260,7 @@
       display: flex;
       align-items: center;
       gap: clamp(18px, 2.2vw, 32px);
+      margin-left: auto;
     }
 
     .nav-links > a:not(.button) {
@@ -274,7 +278,7 @@
       left: 0;
       height: 3px;
       border-radius: 99px;
-      background: var(--orange);
+      background: var(--gold-accent);
       content: "";
       transform: scaleX(0);
       transform-origin: right;
@@ -285,6 +289,36 @@
     .nav-links > a:not(.button):focus-visible::after {
       transform: scaleX(1);
       transform-origin: left;
+    }
+
+    .nav-tools {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .language-toggle {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid rgba(23, 43, 116, .17);
+      border-radius: 50%;
+      color: var(--navy);
+      background: rgba(255, 255, 255, .78);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .language-toggle:hover {
+      color: var(--white);
+      background: var(--navy);
+      transform: translateY(-2px);
     }
 
     .menu-toggle {
@@ -344,12 +378,13 @@
 
     .button-primary {
       color: var(--white);
-      background: var(--orange);
-      box-shadow: 0 12px 28px rgba(255, 104, 31, .26);
+      background: var(--teal-action);
+      box-shadow: 0 12px 28px rgba(20, 127, 147, .26);
     }
 
     .button-primary:hover {
-      box-shadow: 0 16px 34px rgba(255, 104, 31, .34);
+      background: var(--teal-action-hover);
+      box-shadow: 0 16px 34px rgba(20, 127, 147, .34);
     }
 
     .button-secondary {
@@ -426,7 +461,7 @@
     }
 
     .highlight-orange {
-      color: var(--orange);
+      color: var(--gold-display);
     }
 
     .hero-actions {
@@ -682,7 +717,7 @@
       max-width: 830px;
       margin: 34px auto 0;
       padding: 17px 20px;
-      border: 1px solid rgba(255, 104, 31, .17);
+      border: 1px solid rgba(169, 111, 0, .2);
       border-radius: 16px;
       color: #5f4d43;
       background: #fff7ef;
@@ -694,7 +729,7 @@
       height: 21px;
       flex: 0 0 auto;
       margin-top: 1px;
-      color: var(--orange);
+      color: var(--gold-accent);
     }
 
     .bridge {
@@ -909,7 +944,7 @@
     .team-role {
       display: inline-block;
       margin-bottom: 10px;
-      color: var(--orange);
+      color: var(--gold-accent);
       font-size: .8rem;
       font-weight: 900;
       letter-spacing: .08em;
@@ -1003,7 +1038,7 @@
     }
 
     .contact-item a:hover {
-      color: var(--orange);
+      color: var(--gold-accent);
       text-decoration: underline;
       text-underline-offset: 3px;
     }
@@ -1138,7 +1173,7 @@
       border: 4px solid var(--white);
       border-radius: 50% 50% 50% 8px;
       color: var(--white);
-      background: var(--orange);
+      background: var(--teal-action);
       box-shadow: 0 9px 22px rgba(23, 43, 116, .26);
       transform: rotate(-45deg);
     }
@@ -1183,8 +1218,8 @@
       padding: clamp(34px, 6vw, 58px);
       border-radius: 32px;
       color: var(--white);
-      background: var(--orange);
-      box-shadow: 0 22px 50px rgba(255, 104, 31, .27);
+      background: var(--teal-action);
+      box-shadow: 0 22px 50px rgba(20, 127, 147, .27);
       overflow: hidden;
     }
 
@@ -1600,6 +1635,14 @@
     }
 
     @media (max-width: 430px) {
+      .nav-shell {
+        gap: 12px;
+      }
+
+      .brand img {
+        width: 172px;
+      }
+
       h1 {
         font-size: 2.55rem;
       }
@@ -1697,7 +1740,7 @@
             "name": "¿Pueden atenderme si no vivo en Calvillo?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sí. Consultoría Bilingüe ofrece atención virtual los martes y jueves de 10:00 a 16:00 horas."
+              "text": "Sí. Ofrecemos atención de lunes a viernes de 10:00 am a 4:00 pm."
             }
           },
           {
@@ -1724,26 +1767,29 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido" data-i18n="skipContent">Saltar al contenido</a>
 
   <header class="site-header" id="inicio">
     <div class="container nav-shell">
-      <a class="brand" href="#inicio" aria-label="Consultoría Bilingüe, ir al inicio">
+      <a class="brand" href="#inicio" aria-label="Consultoría Bilingüe, ir al inicio" data-i18n-aria="brandHome">
         <img src="assets/logo.png" width="933" height="231" alt="Consultoría Bilingüe">
       </a>
 
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav-links" id="site-nav" aria-label="Navegación principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#nosotros">Quiénes somos</a>
-        <a href="#contacto">Contacto</a>
-        <a class="button button-primary" href="https://wa.me/524951035500?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer">Escríbenos</a>
+      <nav class="nav-links" id="site-nav" aria-label="Navegación principal" data-i18n-aria="mainNav">
+        <a href="#servicios" data-i18n="navServices">Servicios</a>
+        <a href="#nosotros" data-i18n="navAbout">Quiénes somos</a>
+        <a href="#contacto" data-i18n="navContact">Contacto</a>
+        <a class="button button-primary" href="https://wa.me/524951035500?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" data-wa="general" data-i18n="navWrite">Escríbenos</a>
       </nav>
+
+      <div class="nav-tools">
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Cambiar idioma a inglés" title="Cambiar idioma a inglés">EN</button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -1751,52 +1797,52 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">De México para el mundo</span>
-          <h1 id="hero-title">Conectamos culturas. <span class="highlight-orange">Simplificamos</span> tus trámites.</h1>
-          <p class="lead">Empoderamos a personas y organizaciones con servicios bilingües, acompañamiento cercano y soluciones claras para procesos internacionales.</p>
+          <span class="eyebrow" data-i18n="heroEyebrow">De México para el mundo</span>
+          <h1 id="hero-title" data-i18n-html="heroTitle">Conectamos culturas. <span class="highlight-orange">Simplificamos</span> tus trámites.</h1>
+          <p class="lead" data-i18n="heroLead">Empoderamos a personas y organizaciones con servicios bilingües, acompañamiento cercano y soluciones claras para procesos internacionales.</p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="https://wa.me/524951035500?text=Hola%2C%20quisiera%20recibir%20una%20evaluaci%C3%B3n%20inicial." target="_blank" rel="noopener noreferrer">
+            <a class="button button-primary" href="https://wa.me/524951035500?text=Hola%2C%20quisiera%20recibir%20una%20evaluaci%C3%B3n%20inicial." target="_blank" rel="noopener noreferrer" data-wa="evaluation">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
-              Solicita una evaluación
+              <span data-i18n="heroEvaluation">Solicita una evaluación</span>
             </a>
-            <a class="button button-secondary" href="#servicios">Conoce los servicios</a>
+            <a class="button button-secondary" href="#servicios" data-i18n="heroServices">Conoce los servicios</a>
           </div>
 
-          <div class="trust-row" role="group" aria-label="Beneficios">
-            <span class="trust-item">Español e inglés</span>
-            <span class="trust-item">Atención presencial y virtual</span>
+          <div class="trust-row" role="group" aria-label="Beneficios" data-i18n-aria="benefitsLabel">
+            <span class="trust-item" data-i18n="benefitBilingual">Español e inglés</span>
+            <span class="trust-item" data-i18n="benefitHybrid">Atención presencial y virtual</span>
           </div>
         </div>
 
-        <div class="hero-art" role="group" aria-label="Obras que representan nuestra identidad y comunidad">
+        <div class="hero-art" role="group" aria-label="Obras que representan nuestra identidad y comunidad" data-i18n-aria="artGroup">
           <div class="art-backdrop" aria-hidden="true"></div>
-          <img class="culture-art art-one" src="assets/circulo_iglesia.png" width="366" height="378" alt="Detalle artístico de una iglesia de Calvillo">
-          <img class="culture-art art-two" src="assets/circulo_rojo_fuego.png" width="366" height="378" alt="Ilustración artística de un corazón">
-          <img class="culture-art art-three" src="assets/circulo_patron_rojo.png" width="366" height="378" alt="Patrón artístico multicolor">
+          <img class="culture-art art-one" src="assets/circulo_iglesia.png" width="366" height="378" alt="Detalle artístico de una iglesia de Calvillo" data-i18n-alt="artChurch">
+          <img class="culture-art art-two" src="assets/circulo_rojo_fuego.png" width="366" height="378" alt="Ilustración artística de un corazón" data-i18n-alt="artHeart">
+          <img class="culture-art art-three" src="assets/circulo_patron_rojo.png" width="366" height="378" alt="Patrón artístico multicolor" data-i18n-alt="artPattern">
           <img class="hero-butterfly" src="assets/Mariposa.png" width="144" height="113" alt="" aria-hidden="true">
         </div>
       </div>
 
-      <div class="container quick-facts" role="group" aria-label="Información destacada">
+      <div class="container quick-facts" role="group" aria-label="Información destacada" data-i18n-aria="highlightsLabel">
         <div class="facts-card">
           <div class="fact">
             <span class="fact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
             </span>
-            Atención bilingüe
+            <span data-i18n="factBilingual">Atención bilingüe</span>
           </div>
           <div class="fact">
             <span class="fact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </span>
-            Oficina en Calvillo
+            <span data-i18n="factOffice">Oficina en Calvillo</span>
           </div>
           <div class="fact">
             <span class="fact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
             </span>
-            Evaluación inicial sin costo
+            <span data-i18n="factFree">Evaluación inicial sin costo</span>
           </div>
         </div>
       </div>
@@ -1805,9 +1851,9 @@
     <section class="services" id="servicios" aria-labelledby="services-title">
       <div class="container">
         <div class="section-heading center">
-          <span class="eyebrow">Servicios</span>
-          <h2 id="services-title">¿Cómo podemos ayudarte?</h2>
-          <p>Te orientamos de forma clara y organizada para que cada documento, solicitud y contacto avance con menos complicaciones.</p>
+          <span class="eyebrow" data-i18n="servicesEyebrow">Servicios</span>
+          <h2 id="services-title" data-i18n="servicesTitle">¿Cómo podemos ayudarte?</h2>
+          <p data-i18n="servicesIntro">Te orientamos de forma clara y organizada para que cada documento, solicitud y contacto avance con menos complicaciones.</p>
         </div>
 
         <div class="services-grid">
@@ -1816,8 +1862,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h8M9 17h5"/><path d="M4 6H2v16h14"/></svg>
             </div>
             <div>
-              <h3>Gestiones y trámites</h3>
-              <p>Te apoyamos con visas, historiales migratorios, perdones, formularios N-400, procesos CRBA y más.</p>
+              <h3 data-i18n="service1Title">Gestiones y trámites</h3>
+              <p data-i18n="service1Desc">Te apoyamos con visas, historiales migratorios, perdones, formularios N-400, procesos CRBA y más.</p>
             </div>
           </article>
 
@@ -1826,8 +1872,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/><circle cx="7" cy="7" r="3"/><path d="m5.8 7 1 1 1.7-2"/></svg>
             </div>
             <div>
-              <h3>Recuperación de registros</h3>
-              <p>Localizamos registros civiles, médicos, escolares y otros documentos importantes emitidos en distintos países.</p>
+              <h3 data-i18n="service2Title">Recuperación de registros</h3>
+              <p data-i18n="service2Desc">Localizamos registros civiles, médicos, escolares y otros documentos importantes emitidos en distintos países.</p>
             </div>
           </article>
 
@@ -1836,8 +1882,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/><path d="m16 8 2-2 2 2"/></svg>
             </div>
             <div>
-              <h3>Conexión internacional</h3>
-              <p>Contactamos oficinas extranjeras relacionadas con salud, educación, empleo, negocios y otras instituciones.</p>
+              <h3 data-i18n="service3Title">Conexión internacional</h3>
+              <p data-i18n="service3Desc">Contactamos oficinas extranjeras relacionadas con salud, educación, empleo, negocios y otras instituciones.</p>
             </div>
           </article>
 
@@ -1846,15 +1892,15 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
             </div>
             <div>
-              <h3>Orientación bilingüe</h3>
-              <p>Recibe una evaluación inicial sin costo y acompañamiento administrativo cercano tanto en español como en inglés.</p>
+              <h3 data-i18n="service4Title">Orientación bilingüe</h3>
+              <p data-i18n="service4Desc">Recibe una evaluación inicial sin costo y acompañamiento administrativo cercano tanto en español como en inglés.</p>
             </div>
           </article>
         </div>
 
         <div class="service-note">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-          <span><strong>Importante:</strong> Consultoría Bilingüe no es un despacho de abogados. No brindamos asesoría legal ni representación ante autoridades o tribunales. Nuestro servicio es exclusivamente administrativo e informativo.</span>
+          <span data-i18n-html="serviceNote"><strong>Importante:</strong> Consultoría Bilingüe no es un despacho de abogados. No brindamos asesoría legal ni representación ante autoridades o tribunales. Nuestro servicio es exclusivamente administrativo e informativo.</span>
         </div>
       </div>
     </section>
@@ -1869,32 +1915,32 @@
         </div>
 
         <div class="bridge-copy">
-          <span class="eyebrow">Tu historia importa</span>
-          <h2 id="bridge-title">Un puente entre idiomas, instituciones y personas</h2>
-          <p>Sabemos que los procesos internacionales pueden sentirse complejos. Por eso traducimos no solo palabras: también pasos, requisitos y opciones para que puedas tomar decisiones con claridad.</p>
+          <span class="eyebrow" data-i18n="bridgeEyebrow">Tu historia importa</span>
+          <h2 id="bridge-title" data-i18n="bridgeTitle">Un puente entre idiomas, instituciones y personas</h2>
+          <p data-i18n="bridgeIntro">Sabemos que los procesos internacionales pueden sentirse complejos. Por eso traducimos no solo palabras: también pasos, requisitos y opciones para que puedas tomar decisiones con claridad.</p>
 
           <div class="bridge-points">
             <div class="bridge-point">
               <span class="bridge-point-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               </span>
-              <div><strong>Comunicación clara</strong><span>Te explicamos cada etapa en tu idioma.</span></div>
+              <div><strong data-i18n="point1Title">Comunicación clara</strong><span data-i18n="point1Desc">Te explicamos cada etapa en tu idioma.</span></div>
             </div>
             <div class="bridge-point">
               <span class="bridge-point-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               </span>
-              <div><strong>Acompañamiento humano</strong><span>Atención personalizada, respetuosa y cercana.</span></div>
+              <div><strong data-i18n="point2Title">Acompañamiento humano</strong><span data-i18n="point2Desc">Atención personalizada, respetuosa y cercana.</span></div>
             </div>
             <div class="bridge-point">
               <span class="bridge-point-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               </span>
-              <div><strong>Alcance internacional</strong><span>Gestiones desde Calvillo para México y el extranjero.</span></div>
+              <div><strong data-i18n="point3Title">Alcance internacional</strong><span data-i18n="point3Desc">Gestiones desde Calvillo para México y el extranjero.</span></div>
             </div>
           </div>
 
-          <a class="button button-secondary" href="#contacto">Cuéntanos qué necesitas</a>
+          <a class="button button-secondary" href="#contacto" data-i18n="bridgeCta">Cuéntanos qué necesitas</a>
         </div>
       </div>
     </section>
@@ -1902,9 +1948,9 @@
     <section class="about" id="nosotros" aria-labelledby="about-title">
       <div class="container about-grid">
         <div class="about-intro">
-          <span class="eyebrow">Quiénes somos</span>
-          <h2 id="about-title">Experiencia con compromiso hacia nuestra comunidad</h2>
-          <p>Somos un equipo bilingüe que combina atención personal, organización y conocimiento intercultural para ayudarte a navegar procesos que suelen ser complicados.</p>
+          <span class="eyebrow" data-i18n="aboutEyebrow">Quiénes somos</span>
+          <h2 id="about-title" data-i18n="aboutTitle">Experiencia con compromiso hacia nuestra comunidad</h2>
+          <p data-i18n="aboutIntro">Somos un equipo bilingüe que combina atención personal, organización y conocimiento intercultural para ayudarte a navegar procesos que suelen ser complicados.</p>
         </div>
 
         <div class="team-list">
@@ -1914,9 +1960,9 @@
               <img src="assets/Mariposa.png" width="144" height="113" alt="">
             </div>
             <div>
-              <span class="team-role">Consultora y fundadora</span>
+              <span class="team-role" data-i18n="mariaRole">Consultora y fundadora</span>
               <h3>María Guadalupe Velasco de Loera</h3>
-              <p>Con más de 15 años de experiencia como traductora e intérprete, brinda orientación clara para superar barreras lingüísticas, culturales y administrativas.</p>
+              <p data-i18n="mariaDesc">Con más de 15 años de experiencia como traductora e intérprete, brinda orientación clara para superar barreras lingüísticas, culturales y administrativas.</p>
             </div>
           </article>
 
@@ -1926,9 +1972,9 @@
               <img src="assets/Mariposa.png" width="144" height="113" alt="">
             </div>
             <div>
-              <span class="team-role">Coordinadora de operaciones</span>
+              <span class="team-role" data-i18n="jaquelineRole">Coordinadora de operaciones</span>
               <h3>Jaqueline Romo de Loera</h3>
-              <p>Coordina cada proceso con orden, eficiencia y atención al detalle para que nuestros clientes reciban un acompañamiento responsable y cercano.</p>
+              <p data-i18n="jaquelineDesc">Coordina cada proceso con orden, eficiencia y atención al detalle para que nuestros clientes reciban un acompañamiento responsable y cercano.</p>
             </div>
           </article>
         </div>
@@ -1939,65 +1985,65 @@
       <div class="container">
         <div class="contact-layout">
           <div class="contact-panel">
-            <span class="eyebrow">Contáctanos y visítanos</span>
-            <h2 id="contact-title">Estamos aquí para orientarte</h2>
-            <p>Elige el medio que te resulte más cómodo. Atendemos en Calvillo y también en línea.</p>
+            <span class="eyebrow" data-i18n="contactEyebrow">Contáctanos y visítanos</span>
+            <h2 id="contact-title" data-i18n="contactTitle">Estamos aquí para orientarte</h2>
+            <p data-i18n="contactIntro">Elige el medio que te resulte más cómodo. Atendemos en Calvillo y también en línea.</p>
 
             <ul class="contact-list">
               <li class="contact-item">
                 <span class="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
                 </span>
-                <div><small>México</small><a href="tel:+524951035500">495&nbsp;103&nbsp;5500</a></div>
+                <div><small data-i18n="mexico">México</small><a href="tel:+524951035500">495&nbsp;103&nbsp;5500</a></div>
               </li>
               <li class="contact-item">
                 <span class="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
                 </span>
-                <div><small>Estados Unidos</small><a href="tel:+14056558588">405&nbsp;655&nbsp;8588</a></div>
+                <div><small data-i18n="unitedStates">Estados Unidos</small><a href="tel:+14056558588">405&nbsp;655&nbsp;8588</a></div>
               </li>
               <li class="contact-item">
                 <span class="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
                 </span>
-                <div><small>Correo</small><a href="mailto:consultacalvillo@gmail.com">consultacalvillo@gmail.com</a></div>
+                <div><small data-i18n="emailLabel">Correo</small><a href="mailto:consultacalvillo@gmail.com">consultacalvillo@gmail.com</a></div>
               </li>
               <li class="contact-item">
                 <span class="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </span>
-                <div><small>Dirección</small><address>Nevado de Colima #102, Cerrito Alto, Calvillo, Ags.</address></div>
+                <div><small data-i18n="addressLabel">Dirección</small><address>Nevado de Colima #102, Cerrito Alto, Calvillo, Ags.</address></div>
               </li>
             </ul>
 
-            <div class="hours-card" role="group" aria-label="Horarios de atención">
-              <div><strong>En oficina</strong><span>Lunes, miércoles y viernes · 10:00 a 16:00</span></div>
-              <div><strong>En línea</strong><span>Martes y jueves · 10:00 a 16:00</span></div>
+            <div class="hours-card" role="group" aria-label="Horarios de atención" data-i18n-aria="hoursAria">
+              <div><strong data-i18n="officeTitle">En oficina</strong><span data-i18n="officeHours">Lunes, miércoles y viernes · 10:00 a 16:00</span></div>
+              <div><strong data-i18n="onlineTitle">En línea</strong><span data-i18n="onlineHours">Martes y jueves · 10:00 a 16:00</span></div>
             </div>
 
             <div class="social-row">
-              <span>Síguenos:</span>
-              <a class="social-link" href="https://www.instagram.com/consultoriabilingue/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Consultoría Bilingüe">
+              <span data-i18n="followUs">Síguenos:</span>
+              <a class="social-link" href="https://www.instagram.com/consultoriabilingue/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Consultoría Bilingüe" data-i18n-aria="instagramAria">
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none"/></svg>
               </a>
-              <a class="social-link" href="https://www.facebook.com/people/Consultor%C3%ADa-Biling%C3%BCe/61565243084784/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Consultoría Bilingüe">
+              <a class="social-link" href="https://www.facebook.com/people/Consultor%C3%ADa-Biling%C3%BCe/61565243084784/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Consultoría Bilingüe" data-i18n-aria="facebookAria">
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v7h4v-7h3.2l.8-4h-4V9c0-.7.3-1 1-1Z"/></svg>
               </a>
-              <a class="social-link" href="https://wa.me/524951035500" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Consultoría Bilingüe">
+              <a class="social-link" href="https://wa.me/524951035500" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Consultoría Bilingüe" data-i18n-aria="whatsappSocialAria">
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.5 14.78L2 22l5.38-1.5A9.98 9.98 0 1 0 12.04 2Zm0 17.98a8 8 0 0 1-4.08-1.11l-.29-.17-3.2.89.86-3.12-.19-.31A7.86 7.86 0 1 1 12.04 20Zm4.31-5.89c-.24-.12-1.4-.69-1.61-.77-.22-.08-.38-.12-.54.12-.16.23-.61.77-.75.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17a7.2 7.2 0 0 1-1.32-1.64c-.14-.24-.01-.36.1-.48.1-.1.24-.28.35-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.73-1.78-.2-.46-.4-.4-.54-.41h-.46a.88.88 0 0 0-.63.3c-.22.24-.83.81-.83 1.98s.85 2.3.97 2.46c.12.16 1.67 2.55 4.04 3.57.57.24 1 .39 1.35.5.57.18 1.08.15 1.49.09.45-.07 1.4-.57 1.59-1.13.2-.55.2-1.03.14-1.13-.06-.1-.22-.16-.45-.28Z"/></svg>
               </a>
             </div>
           </div>
 
           <div class="map-panel">
-            <section id="map" aria-label="Mapa con la ubicación de Consultoría Bilingüe en Calvillo"></section>
+            <section id="map" aria-label="Mapa con la ubicación de Consultoría Bilingüe en Calvillo" data-i18n-aria="mapAria"></section>
             <div class="map-actions">
               <a class="button" href="https://www.google.com/maps/dir/?api=1&destination=21.8400675,-102.7281393" target="_blank" rel="noopener noreferrer">
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 8-8 10 10-8 8z"/><path d="M16 8v5h-5M11 13l5-5"/></svg>
-                Cómo llegar
+                <span data-i18n="directions">Cómo llegar</span>
               </a>
             </div>
-            <noscript><p><a href="https://www.openstreetmap.org/?mlat=21.8400675&amp;mlon=-102.7281393#map=17/21.8400675/-102.7281393">Ver ubicación en OpenStreetMap</a></p></noscript>
+            <noscript><p><a href="https://www.openstreetmap.org/?mlat=21.8400675&amp;mlon=-102.7281393#map=17/21.8400675/-102.7281393">Ver ubicación / View location in OpenStreetMap</a></p></noscript>
           </div>
         </div>
       </div>
@@ -2006,22 +2052,22 @@
     <section class="faq" aria-labelledby="faq-title">
       <div class="container">
         <div class="section-heading center">
-          <span class="eyebrow">Preguntas frecuentes</span>
-          <h2 id="faq-title">Antes de comenzar</h2>
+          <span class="eyebrow" data-i18n="faqEyebrow">Preguntas frecuentes</span>
+          <h2 id="faq-title" data-i18n="faqTitle">Antes de comenzar</h2>
         </div>
 
         <div class="faq-grid">
           <article class="faq-card">
-            <h3>¿Pueden atenderme si no vivo en Calvillo?</h3>
-            <p>Sí. Ofrecemos atención virtual los martes y jueves de 10:00 a 16:00.</p>
+            <h3 data-i18n="faq1Question">¿Pueden atenderme si no vivo en Calvillo?</h3>
+            <p data-i18n="faq1Answer">Sí. Ofrecemos atención de lunes a viernes de 10:00 am a 4:00 pm.</p>
           </article>
           <article class="faq-card">
-            <h3>¿La evaluación inicial tiene costo?</h3>
-            <p>No. La evaluación inicial es sin costo y puede realizarse en español o inglés.</p>
+            <h3 data-i18n="faq2Question">¿La evaluación inicial tiene costo?</h3>
+            <p data-i18n="faq2Answer">No. La evaluación inicial es sin costo y puede realizarse en español o inglés.</p>
           </article>
           <article class="faq-card">
-            <h3>¿Brindan asesoría legal?</h3>
-            <p>No. Nuestro acompañamiento es exclusivamente administrativo e informativo.</p>
+            <h3 data-i18n="faq3Question">¿Brindan asesoría legal?</h3>
+            <p data-i18n="faq3Answer">No. Nuestro acompañamiento es exclusivamente administrativo e informativo.</p>
           </article>
         </div>
       </div>
@@ -2031,12 +2077,12 @@
       <section class="cta-band" aria-labelledby="cta-title">
         <div class="cta-grid">
           <div>
-            <h2 id="cta-title">Tu proceso puede sentirse más claro desde hoy.</h2>
-            <p>Escríbenos y cuéntanos qué trámite necesitas realizar.</p>
+            <h2 id="cta-title" data-i18n="ctaTitle">Tu proceso puede sentirse más claro desde hoy.</h2>
+            <p data-i18n="ctaDesc">Escríbenos y cuéntanos qué trámite necesitas realizar.</p>
           </div>
-          <a class="button" href="https://wa.me/524951035500?text=Hola%2C%20necesito%20orientaci%C3%B3n%20para%20un%20tr%C3%A1mite." target="_blank" rel="noopener noreferrer">
+          <a class="button" href="https://wa.me/524951035500?text=Hola%2C%20necesito%20orientaci%C3%B3n%20para%20un%20tr%C3%A1mite." target="_blank" rel="noopener noreferrer" data-wa="process">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.5 14.78L2 22l5.38-1.5A9.98 9.98 0 1 0 12.04 2Zm0 17.98a8 8 0 0 1-4.08-1.11l-.29-.17-3.2.89.86-3.12-.19-.31A7.86 7.86 0 1 1 12.04 20Zm4.31-5.89c-.24-.12-1.4-.69-1.61-.77-.22-.08-.38-.12-.54.12-.16.23-.61.77-.75.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17a7.2 7.2 0 0 1-1.32-1.64c-.14-.24-.01-.36.1-.48.1-.1.24-.28.35-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.73-1.78-.2-.46-.4-.4-.54-.41h-.46a.88.88 0 0 0-.63.3c-.22.24-.83.81-.83 1.98s.85 2.3.97 2.46c.12.16 1.67 2.55 4.04 3.57.57.24 1 .39 1.35.5.57.18 1.08.15 1.49.09.45-.07 1.4-.57 1.59-1.13.2-.55.2-1.03.14-1.13-.06-.1-.22-.16-.45-.28Z"/></svg>
-            Hablar por WhatsApp
+            <span data-i18n="ctaWhatsapp">Hablar por WhatsApp</span>
           </a>
         </div>
       </section>
@@ -2048,19 +2094,19 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img class="footer-logo" src="assets/logo.png" width="933" height="231" loading="lazy" alt="Consultoría Bilingüe">
-          <p>Servicios bilingües que conectan culturas y simplifican trámites internacionales desde Calvillo, Aguascalientes.</p>
+          <p data-i18n="footerDescription">Servicios bilingües que conectan culturas y simplifican trámites internacionales desde Calvillo, Aguascalientes.</p>
         </div>
         <div>
-          <div class="footer-title">Explora</div>
+          <div class="footer-title" data-i18n="footerExplore">Explora</div>
           <ul class="footer-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Quiénes somos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#inicio" data-i18n="footerHome">Inicio</a></li>
+            <li><a href="#servicios" data-i18n="navServices">Servicios</a></li>
+            <li><a href="#nosotros" data-i18n="navAbout">Quiénes somos</a></li>
+            <li><a href="#contacto" data-i18n="navContact">Contacto</a></li>
           </ul>
         </div>
         <div>
-          <div class="footer-title">Contacto</div>
+          <div class="footer-title" data-i18n="navContact">Contacto</div>
           <ul class="footer-links">
             <li><a href="tel:+524951035500">+52&nbsp;495&nbsp;103&nbsp;5500</a></li>
             <li><a href="mailto:consultacalvillo@gmail.com">consultacalvillo@gmail.com</a></li>
@@ -2070,17 +2116,17 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© <span id="current-year">2026</span> Consultoría Bilingüe. Todos los derechos reservados.</p>
-        <p>Atención administrativa e informativa en español e inglés.</p>
+        <p>© <span id="current-year">2026</span> <span data-i18n="footerCopyright">Consultoría Bilingüe. Todos los derechos reservados.</span></p>
+        <p data-i18n="footerAdmin">Atención administrativa e informativa en español e inglés.</p>
       </div>
     </div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/524951035500?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" aria-label="Escribir a Consultoría Bilingüe por WhatsApp">
+  <a class="whatsapp-float" href="https://wa.me/524951035500?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" aria-label="Escribir a Consultoría Bilingüe por WhatsApp" data-wa="general" data-i18n-aria="whatsappFloatAria">
     <span class="whatsapp-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.5 14.78L2 22l5.38-1.5A9.98 9.98 0 1 0 12.04 2Zm0 17.98a8 8 0 0 1-4.08-1.11l-.29-.17-3.2.89.86-3.12-.19-.31A7.86 7.86 0 1 1 12.04 20Zm4.31-5.89c-.24-.12-1.4-.69-1.61-.77-.22-.08-.38-.12-.54.12-.16.23-.61.77-.75.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17a7.2 7.2 0 0 1-1.32-1.64c-.14-.24-.01-.36.1-.48.1-.1.24-.28.35-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.73-1.78-.2-.46-.4-.4-.54-.41h-.46a.88.88 0 0 0-.63.3c-.22.24-.83.81-.83 1.98s.85 2.3.97 2.46c.12.16 1.67 2.55 4.04 3.57.57.24 1 .39 1.35.5.57.18 1.08.15 1.49.09.45-.07 1.4-.57 1.59-1.13.2-.55.2-1.03.14-1.13-.06-.1-.22-.16-.45-.28Z"/></svg>
     </span>
-    <span>¿Necesitas ayuda?</span>
+    <span data-i18n="whatsappHelp">¿Necesitas ayuda?</span>
   </a>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin></script>
@@ -2089,10 +2135,338 @@
       const header = document.querySelector('.site-header');
       const menuButton = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.nav-links');
+      const languageToggle = document.getElementById('language-toggle');
+      const structuredDataElement = document.querySelector('script[type="application/ld+json"]');
+      const baseStructuredData = structuredDataElement ? JSON.parse(structuredDataElement.textContent) : null;
+      let mapMarker = null;
+
+      const translations = {
+        es: {
+          metaTitle: 'Consultoría Bilingüe | Trámites migratorios e internacionales',
+          metaDescription: 'Acompañamiento bilingüe en Calvillo para trámites migratorios, visas, documentos, traducciones y procesos internacionales. Atención presencial y en línea.',
+          ogTitle: 'Consultoría Bilingüe | De México para el mundo',
+          ogDescription: 'Conectamos culturas y simplificamos trámites internacionales con orientación humana en español e inglés.',
+          twitterTitle: 'Consultoría Bilingüe | Trámites internacionales',
+          twitterDescription: 'Orientación bilingüe, cercana y clara para tus trámites migratorios e internacionales.',
+          schemaBusiness: 'Servicios bilingües de apoyo administrativo para trámites migratorios, traducciones y procesos internacionales.',
+          skipContent: 'Saltar al contenido',
+          brandHome: 'Consultoría Bilingüe, ir al inicio',
+          mainNav: 'Navegación principal',
+          openMenu: 'Abrir menú de navegación',
+          closeMenu: 'Cerrar menú de navegación',
+          toggleLanguage: 'Cambiar idioma a inglés',
+          navServices: 'Servicios',
+          navAbout: 'Quiénes somos',
+          navContact: 'Contacto',
+          navWrite: 'Escríbenos',
+          heroEyebrow: 'De México para el mundo',
+          heroTitle: 'Conectamos culturas. <span class="highlight-orange">Simplificamos</span> tus trámites.',
+          heroLead: 'Empoderamos a personas y organizaciones con servicios bilingües, acompañamiento cercano y soluciones claras para procesos internacionales.',
+          heroEvaluation: 'Solicita una evaluación',
+          heroServices: 'Conoce los servicios',
+          benefitsLabel: 'Beneficios',
+          benefitBilingual: 'Español e inglés',
+          benefitHybrid: 'Atención presencial y virtual',
+          artGroup: 'Obras que representan nuestra identidad y comunidad',
+          artChurch: 'Detalle artístico de una iglesia de Calvillo',
+          artHeart: 'Ilustración artística de un corazón',
+          artPattern: 'Patrón artístico multicolor',
+          highlightsLabel: 'Información destacada',
+          factBilingual: 'Atención bilingüe',
+          factOffice: 'Oficina en Calvillo',
+          factFree: 'Evaluación inicial sin costo',
+          servicesEyebrow: 'Servicios',
+          servicesTitle: '¿Cómo podemos ayudarte?',
+          servicesIntro: 'Te orientamos de forma clara y organizada para que cada documento, solicitud y contacto avance con menos complicaciones.',
+          service1Title: 'Gestiones y trámites',
+          service1Desc: 'Te apoyamos con visas, historiales migratorios, perdones, formularios N-400, procesos CRBA y más.',
+          service2Title: 'Recuperación de registros',
+          service2Desc: 'Localizamos registros civiles, médicos, escolares y otros documentos importantes emitidos en distintos países.',
+          service3Title: 'Conexión internacional',
+          service3Desc: 'Contactamos oficinas extranjeras relacionadas con salud, educación, empleo, negocios y otras instituciones.',
+          service4Title: 'Orientación bilingüe',
+          service4Desc: 'Recibe una evaluación inicial sin costo y acompañamiento administrativo cercano tanto en español como en inglés.',
+          serviceNote: '<strong>Importante:</strong> Consultoría Bilingüe no es un despacho de abogados. No brindamos asesoría legal ni representación ante autoridades o tribunales. Nuestro servicio es exclusivamente administrativo e informativo.',
+          bridgeEyebrow: 'Tu historia importa',
+          bridgeTitle: 'Un puente entre idiomas, instituciones y personas',
+          bridgeIntro: 'Sabemos que los procesos internacionales pueden sentirse complejos. Por eso traducimos no solo palabras: también pasos, requisitos y opciones para que puedas tomar decisiones con claridad.',
+          point1Title: 'Comunicación clara',
+          point1Desc: 'Te explicamos cada etapa en tu idioma.',
+          point2Title: 'Acompañamiento humano',
+          point2Desc: 'Atención personalizada, respetuosa y cercana.',
+          point3Title: 'Alcance internacional',
+          point3Desc: 'Gestiones desde Calvillo para México y el extranjero.',
+          bridgeCta: 'Cuéntanos qué necesitas',
+          aboutEyebrow: 'Quiénes somos',
+          aboutTitle: 'Experiencia con compromiso hacia nuestra comunidad',
+          aboutIntro: 'Somos un equipo bilingüe que combina atención personal, organización y conocimiento intercultural para ayudarte a navegar procesos que suelen ser complicados.',
+          mariaRole: 'Consultora y fundadora',
+          mariaDesc: 'Con más de 15 años de experiencia como traductora e intérprete, brinda orientación clara para superar barreras lingüísticas, culturales y administrativas.',
+          jaquelineRole: 'Coordinadora de operaciones',
+          jaquelineDesc: 'Coordina cada proceso con orden, eficiencia y atención al detalle para que nuestros clientes reciban un acompañamiento responsable y cercano.',
+          contactEyebrow: 'Contáctanos y visítanos',
+          contactTitle: 'Estamos aquí para orientarte',
+          contactIntro: 'Elige el medio que te resulte más cómodo. Atendemos en Calvillo y también en línea.',
+          mexico: 'México',
+          unitedStates: 'Estados Unidos',
+          emailLabel: 'Correo',
+          addressLabel: 'Dirección',
+          hoursAria: 'Horarios de atención',
+          officeTitle: 'En oficina',
+          officeHours: 'Lunes, miércoles y viernes · 10:00 a 16:00',
+          onlineTitle: 'En línea',
+          onlineHours: 'Martes y jueves · 10:00 a 16:00',
+          followUs: 'Síguenos:',
+          instagramAria: 'Instagram de Consultoría Bilingüe',
+          facebookAria: 'Facebook de Consultoría Bilingüe',
+          whatsappSocialAria: 'WhatsApp de Consultoría Bilingüe',
+          mapAria: 'Mapa con la ubicación de Consultoría Bilingüe en Calvillo',
+          directions: 'Cómo llegar',
+          zoomIn: 'Acercar mapa',
+          zoomOut: 'Alejar mapa',
+          faqEyebrow: 'Preguntas frecuentes',
+          faqTitle: 'Antes de comenzar',
+          faq1Question: '¿Pueden atenderme si no vivo en Calvillo?',
+          faq1Answer: 'Sí. Ofrecemos atención de lunes a viernes de 10:00 am a 4:00 pm.',
+          faq2Question: '¿La evaluación inicial tiene costo?',
+          faq2Answer: 'No. La evaluación inicial es sin costo y puede realizarse en español o inglés.',
+          faq3Question: '¿Brindan asesoría legal?',
+          faq3Answer: 'No. Nuestro acompañamiento es exclusivamente administrativo e informativo.',
+          ctaTitle: 'Tu proceso puede sentirse más claro desde hoy.',
+          ctaDesc: 'Escríbenos y cuéntanos qué trámite necesitas realizar.',
+          ctaWhatsapp: 'Hablar por WhatsApp',
+          footerDescription: 'Servicios bilingües que conectan culturas y simplifican trámites internacionales desde Calvillo, Aguascalientes.',
+          footerExplore: 'Explora',
+          footerHome: 'Inicio',
+          footerCopyright: 'Consultoría Bilingüe. Todos los derechos reservados.',
+          footerAdmin: 'Atención administrativa e informativa en español e inglés.',
+          whatsappFloatAria: 'Escribir a Consultoría Bilingüe por WhatsApp',
+          whatsappHelp: '¿Necesitas ayuda?',
+          mapPopup: '<strong>Consultoría Bilingüe</strong><br>Nevado de Colima #102<br>Cerrito Alto, Calvillo, Ags.',
+          whatsappMessages: {
+            general: 'Hola, quisiera información sobre sus servicios.',
+            evaluation: 'Hola, quisiera recibir una evaluación inicial.',
+            process: 'Hola, necesito orientación para un trámite.'
+          }
+        },
+        en: {
+          metaTitle: 'Consultoría Bilingüe | Immigration and International Services',
+          metaDescription: 'Bilingual support in Calvillo for immigration procedures, visas, documents, translations, and international processes. In-person and online service.',
+          ogTitle: 'Consultoría Bilingüe | From Mexico to the world',
+          ogDescription: 'We connect cultures and simplify international processes through thoughtful guidance in English and Spanish.',
+          twitterTitle: 'Consultoría Bilingüe | International Services',
+          twitterDescription: 'Clear, personalized bilingual guidance for immigration and international processes.',
+          schemaBusiness: 'Bilingual administrative support for immigration procedures, translations, and international processes.',
+          skipContent: 'Skip to content',
+          brandHome: 'Consultoría Bilingüe, go to home',
+          mainNav: 'Main navigation',
+          openMenu: 'Open navigation menu',
+          closeMenu: 'Close navigation menu',
+          toggleLanguage: 'Switch language to Spanish',
+          navServices: 'Services',
+          navAbout: 'About us',
+          navContact: 'Contact',
+          navWrite: 'Message us',
+          heroEyebrow: 'From Mexico to the world',
+          heroTitle: 'Connecting cultures. <span class="highlight-orange">Simplifying</span> your international processes.',
+          heroLead: 'We empower individuals and organizations through bilingual services, personalized support, and clear solutions for international processes.',
+          heroEvaluation: 'Request an evaluation',
+          heroServices: 'Explore our services',
+          benefitsLabel: 'Benefits',
+          benefitBilingual: 'English and Spanish',
+          benefitHybrid: 'In-person and virtual assistance',
+          artGroup: 'Artwork representing our identity and community',
+          artChurch: 'Artistic detail of a church in Calvillo',
+          artHeart: 'Artistic illustration of a heart',
+          artPattern: 'Multicolored artistic pattern',
+          highlightsLabel: 'Key information',
+          factBilingual: 'Bilingual assistance',
+          factOffice: 'Office in Calvillo',
+          factFree: 'Free initial evaluation',
+          servicesEyebrow: 'Services',
+          servicesTitle: 'How can we help you?',
+          servicesIntro: 'We guide you clearly and efficiently so every document, application, and contact can move forward with fewer complications.',
+          service1Title: 'Applications and procedures',
+          service1Desc: 'We support you with visas, immigration records, waivers, N-400 forms, CRBA processes, and more.',
+          service2Title: 'Records retrieval',
+          service2Desc: 'We locate civil, medical, school, and other important records issued in different countries.',
+          service3Title: 'International connections',
+          service3Desc: 'We contact foreign offices related to healthcare, education, employment, business, and other institutions.',
+          service4Title: 'Bilingual guidance',
+          service4Desc: 'Receive a free initial evaluation and personalized administrative assistance in English or Spanish.',
+          serviceNote: '<strong>Important:</strong> Consultoría Bilingüe is not a law firm. We do not provide legal advice or representation before government agencies or courts. Our services are strictly administrative and informational.',
+          bridgeEyebrow: 'Your story matters',
+          bridgeTitle: 'A bridge between languages, institutions, and people',
+          bridgeIntro: 'We know international procedures can feel complex. That is why we translate more than words: we also clarify steps, requirements, and options so you can make informed decisions.',
+          point1Title: 'Clear communication',
+          point1Desc: 'We explain every stage in your preferred language.',
+          point2Title: 'Human support',
+          point2Desc: 'Personalized, respectful, and attentive assistance.',
+          point3Title: 'International reach',
+          point3Desc: 'Services from Calvillo for Mexico and abroad.',
+          bridgeCta: 'Tell us what you need',
+          aboutEyebrow: 'About us',
+          aboutTitle: 'Experience and commitment to our community',
+          aboutIntro: 'We are a bilingual team combining personal attention, organization, and intercultural knowledge to help you navigate processes that often feel complicated.',
+          mariaRole: 'Consultant and founder',
+          mariaDesc: 'With more than 15 years of experience as a translator and interpreter, she provides clear guidance to overcome linguistic, cultural, and administrative barriers.',
+          jaquelineRole: 'Operations coordinator',
+          jaquelineDesc: 'She coordinates each process with organization, efficiency, and attention to detail, ensuring every client receives responsible and personalized support.',
+          contactEyebrow: 'Contact us and visit us',
+          contactTitle: 'We are here to guide you',
+          contactIntro: 'Choose the option that works best for you. We serve clients in Calvillo and online.',
+          mexico: 'Mexico',
+          unitedStates: 'United States',
+          emailLabel: 'Email',
+          addressLabel: 'Address',
+          hoursAria: 'Business hours',
+          officeTitle: 'In office',
+          officeHours: 'Monday, Wednesday, and Friday · 10:00 a.m. to 4:00 p.m.',
+          onlineTitle: 'Online',
+          onlineHours: 'Tuesday and Thursday · 10:00 a.m. to 4:00 p.m.',
+          followUs: 'Follow us:',
+          instagramAria: 'Consultoría Bilingüe on Instagram',
+          facebookAria: 'Consultoría Bilingüe on Facebook',
+          whatsappSocialAria: 'Consultoría Bilingüe on WhatsApp',
+          mapAria: 'Map showing the location of Consultoría Bilingüe in Calvillo',
+          directions: 'Get directions',
+          zoomIn: 'Zoom in',
+          zoomOut: 'Zoom out',
+          faqEyebrow: 'Frequently asked questions',
+          faqTitle: 'Before you begin',
+          faq1Question: 'Can you help me if I do not live in Calvillo?',
+          faq1Answer: 'Yes. We provide assistance Monday through Friday from 10:00 a.m. to 4:00 p.m.',
+          faq2Question: 'Is there a fee for the initial evaluation?',
+          faq2Answer: 'No. The initial evaluation is free and can be conducted in English or Spanish.',
+          faq3Question: 'Do you provide legal advice?',
+          faq3Answer: 'No. Our assistance is strictly administrative and informational.',
+          ctaTitle: 'Your process can start feeling clearer today.',
+          ctaDesc: 'Message us and tell us what process you need help with.',
+          ctaWhatsapp: 'Chat on WhatsApp',
+          footerDescription: 'Bilingual services connecting cultures and simplifying international processes from Calvillo, Aguascalientes.',
+          footerExplore: 'Explore',
+          footerHome: 'Home',
+          footerCopyright: 'Consultoría Bilingüe. All rights reserved.',
+          footerAdmin: 'Administrative and informational assistance in English and Spanish.',
+          whatsappFloatAria: 'Message Consultoría Bilingüe on WhatsApp',
+          whatsappHelp: 'Need help?',
+          mapPopup: '<strong>Consultoría Bilingüe</strong><br>102 Nevado de Colima<br>Cerrito Alto, Calvillo, Aguascalientes',
+          whatsappMessages: {
+            general: 'Hello, I would like information about your services.',
+            evaluation: 'Hello, I would like to request an initial evaluation.',
+            process: 'Hello, I need guidance with a procedure.'
+          }
+        }
+      };
+
+      let currentLanguage = 'es';
+      try {
+        if (localStorage.getItem('consultoria-language') === 'en') currentLanguage = 'en';
+      } catch (error) {
+        currentLanguage = 'es';
+      }
+
+      const updateMenuLabel = (isOpen) => {
+        const copy = translations[currentLanguage];
+        menuButton.setAttribute('aria-label', isOpen ? copy.closeMenu : copy.openMenu);
+      };
+
+      const updateStructuredData = (copy, language) => {
+        if (!structuredDataElement || !baseStructuredData) return;
+        const data = JSON.parse(JSON.stringify(baseStructuredData));
+        const graph = data['@graph'] || [];
+        const business = graph.find((item) => item['@type'] === 'ProfessionalService');
+        const faqPage = graph.find((item) => item['@type'] === 'FAQPage');
+
+        if (business) {
+          business.description = copy.schemaBusiness;
+          business.areaServed = language === 'en' ? ['Mexico', 'United States'] : ['México', 'Estados Unidos'];
+          business.inLanguage = language === 'en' ? 'en-US' : 'es-MX';
+          if (business.openingHoursSpecification) {
+            business.openingHoursSpecification[0].description = language === 'en' ? 'In-office service' : 'Atención en oficina';
+            business.openingHoursSpecification[1].description = language === 'en' ? 'Online service' : 'Atención en línea';
+          }
+        }
+
+        if (faqPage) {
+          faqPage.inLanguage = language === 'en' ? 'en-US' : 'es-MX';
+          faqPage.mainEntity = [1, 2, 3].map((number) => ({
+            '@type': 'Question',
+            name: copy[`faq${number}Question`],
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: copy[`faq${number}Answer`]
+            }
+          }));
+        }
+
+        structuredDataElement.textContent = JSON.stringify(data);
+      };
+
+      const updateMapLanguage = (copy) => {
+        if (mapMarker) mapMarker.setPopupContent(copy.mapPopup);
+        const zoomIn = document.querySelector('.leaflet-control-zoom-in');
+        const zoomOut = document.querySelector('.leaflet-control-zoom-out');
+        if (zoomIn) {
+          zoomIn.title = copy.zoomIn;
+          zoomIn.setAttribute('aria-label', copy.zoomIn);
+        }
+        if (zoomOut) {
+          zoomOut.title = copy.zoomOut;
+          zoomOut.setAttribute('aria-label', copy.zoomOut);
+        }
+      };
+
+      const setMeta = (selector, value) => {
+        const element = document.querySelector(selector);
+        if (element) element.setAttribute('content', value);
+      };
+
+      const applyLanguage = (language) => {
+        currentLanguage = language;
+        const copy = translations[language];
+
+        document.documentElement.lang = language === 'en' ? 'en-US' : 'es-MX';
+        document.title = copy.metaTitle;
+        setMeta('meta[name="description"]', copy.metaDescription);
+        setMeta('meta[property="og:locale"]', language === 'en' ? 'en_US' : 'es_MX');
+        setMeta('meta[property="og:title"]', copy.ogTitle);
+        setMeta('meta[property="og:description"]', copy.ogDescription);
+        setMeta('meta[name="twitter:title"]', copy.twitterTitle);
+        setMeta('meta[name="twitter:description"]', copy.twitterDescription);
+
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+          const value = copy[element.dataset.i18n];
+          if (value !== undefined) element.textContent = value;
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+          const value = copy[element.dataset.i18nHtml];
+          if (value !== undefined) element.innerHTML = value;
+        });
+        document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+          const value = copy[element.dataset.i18nAria];
+          if (value !== undefined) element.setAttribute('aria-label', value);
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+          const value = copy[element.dataset.i18nAlt];
+          if (value !== undefined) element.alt = value;
+        });
+        document.querySelectorAll('[data-wa]').forEach((link) => {
+          const message = copy.whatsappMessages[link.dataset.wa];
+          if (message) link.href = `https://wa.me/524951035500?text=${encodeURIComponent(message)}`;
+        });
+
+        languageToggle.textContent = language === 'es' ? 'EN' : 'ES';
+        languageToggle.setAttribute('aria-label', copy.toggleLanguage);
+        languageToggle.title = copy.toggleLanguage;
+        updateMenuLabel(menuButton.getAttribute('aria-expanded') === 'true');
+        updateStructuredData(copy, language);
+        updateMapLanguage(copy);
+      };
 
       const closeMenu = () => {
         menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Abrir menú de navegación');
+        updateMenuLabel(false);
         menu.classList.remove('is-open');
         header.classList.remove('menu-visible');
         document.body.classList.remove('menu-open');
@@ -2101,10 +2475,20 @@
       menuButton.addEventListener('click', () => {
         const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
         menuButton.setAttribute('aria-expanded', String(!isOpen));
-        menuButton.setAttribute('aria-label', isOpen ? 'Abrir menú de navegación' : 'Cerrar menú de navegación');
+        updateMenuLabel(!isOpen);
         menu.classList.toggle('is-open', !isOpen);
         header.classList.toggle('menu-visible', !isOpen);
         document.body.classList.toggle('menu-open', !isOpen);
+      });
+
+      languageToggle.addEventListener('click', () => {
+        const nextLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        applyLanguage(nextLanguage);
+        try {
+          localStorage.setItem('consultoria-language', nextLanguage);
+        } catch (error) {
+          // The language still changes when browser storage is unavailable.
+        }
       });
 
       menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
@@ -2117,6 +2501,7 @@
       window.addEventListener('scroll', updateHeader, { passive: true });
 
       document.getElementById('current-year').textContent = new Date().getFullYear();
+      applyLanguage(currentLanguage);
 
       if (window.L) {
         const location = [21.8400675, -102.7281393];
@@ -2138,10 +2523,12 @@
           popupAnchor: [0, -46]
         });
 
-        L.marker(location, { icon })
+        mapMarker = L.marker(location, { icon })
           .addTo(map)
-          .bindPopup('<strong>Consultoría Bilingüe</strong><br>Nevado de Colima #102<br>Cerrito Alto, Calvillo, Ags.')
+          .bindPopup(translations[currentLanguage].mapPopup)
           .openPopup();
+
+        updateMapLanguage(translations[currentLanguage]);
       }
     })();
   </script>
